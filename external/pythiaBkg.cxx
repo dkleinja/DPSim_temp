@@ -51,16 +51,6 @@ bool keepTrack(double decayLength, double z0, int parentID, TVector3 mom)
     //see if the opening angle is within acceptance
     if(fabs(mom.Px()/mom.Pz()) > 0.25 || fabs(mom.Py()/mom.Pz()) > 0.15) return false;
 
-    //See if the pion would be absorbed in beam dump
-    //Ignore decays from gamma, J/Psi, vector mesons, etc
-    //if(decayLength > strongDecay){
-    if(abs(parent)==211){
-	    if(G4UniformRand() > TMath::Exp(-lengthInIron/Lint)) return false;
-    }
-    if(abs(parent)==321 || abs(parent)==130){
-	    if(G4UniformRand() > TMath::Exp(-lengthInIron/Kint)) return false;
-    }
-
     return true;
 }
 
