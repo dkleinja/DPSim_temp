@@ -9,10 +9,11 @@ from GDMLUtil import *
 
 ## parse the command line controls
 parser = OptionParser('Usage: %prog [options]')
-parser.add_option('-i', '--input', type = 'string', dest = 'input', help = 'Input geometry definition schema', default = 'geometry_ver1')
+parser.add_option('-i', '--input', type = 'string', dest = 'input', help = 'Input geometry definition schema', default = 'user_liuk_geom_poltgt')
+#parser.add_option('-i', '--input', type = 'string', dest = 'input', help = 'Input geometry definition schema', default = 'user_liuk_geometry_beamMonitors')
 parser.add_option('-o', '--output', type = 'string', dest = 'output', help = 'Output GDML file name', default = 'test.gdml')
 parser.add_option('-t', '--target', type = 'string', dest = 'target', help = 'Type of target in the beam', default = 'Tungsten')
-parser.add_option('-s', '--server', type = 'string', dest = 'server', help = 'MySQL server', default = 'localhost')
+parser.add_option('-s', '--server', type = 'string', dest = 'server', help = 'MySQL server', default = 'e906-db1.fnal.gov')
 parser.add_option('-p', '--port', type = 'int', dest = 'port', help = 'MySQL port', default = 3306)
 (options, args) = parser.parse_args()
 
