@@ -1,6 +1,7 @@
 # Setup the project
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
 project(DPSim CXX C)
+project(DPPythia CXX C)
 
 # Put executables into a bin
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
@@ -62,6 +63,7 @@ file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cxx)
 file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.h)
 if(NOT(LIBONLY))
   add_executable(DPSim DPSim.cxx ${sources} ${headers} ${PROJECT_SOURCE_DIR}/src/DPMCRawEventDict.cxx ${PROJECT_SOURCE_DIR}/src/DPSimConfigDict.cxx)
+  add_executable(DPPythia DPPythia.cxx ${sources} ${headers} ${PROJECT_SOURCE_DIR}/src/DPMCRawEventDict.cxx ${PROJECT_SOURCE_DIR}/src/DPSimConfigDict.cxx)
 endif()
 add_library(DPMCRawEvent SHARED ${PROJECT_SOURCE_DIR}/src/DPMCRawEvent.cxx ${PROJECT_SOURCE_DIR}/src/DPMCRawEventDict.cxx ${PROJECT_SOURCE_DIR}/src/DPSimConfig.cxx ${PROJECT_SOURCE_DIR}/src/DPSimConfigDict.cxx)
 
@@ -145,6 +147,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GEANT4_LINK} ${ROOT_LINK
 set(CMAKE_SHARED_LINKER_FLAGS "${ROOT_LINK}" )
 if(NOT(LIBONLY))
   target_link_libraries(DPSim ${ROOT_LINK} ${PYTHIA_LINK} ${LHAPDF_LINK} ${Geant4_LIBRARIES})
+  target_link_libraries(DPPythia ${ROOT_LINK} ${PYTHIA_LINK} ${LHAPDF_LINK} ${Geant4_LIBRARIES})
 endif()
 
 # add additional targets
